@@ -10,6 +10,9 @@ export default function App(){
         Math.floor(Math.random()*6), Math.floor(Math.random()*6), Math.floor(Math.random()*6), Math.floor(Math.random()*6), Math.floor(Math.random()*6)
     ])
 
+    // another way 
+    // const [arrNum , setArrNum] = React.useState(new Array(10).fill(0).map(x => Math.floor(Math.random()*6)))
+
     // ref كل واحد رح ياشر ع حالو
     const array = arrNum.map((x, index) => {
         return <button key={index} onClick={()=> handleClick(index)} ref={(el) => buttonRef.current[index] = el}>
