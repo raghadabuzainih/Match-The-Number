@@ -1,4 +1,5 @@
 import React from "react";
+import ReactConfetti from "react-confetti"
 
 export default function App(){
     const updateButton = React.useRef(null)
@@ -55,6 +56,7 @@ export default function App(){
             })
             setArrNum(old => old.map(x => Math.floor(Math.random()*6))) //reset all values to a new random value
             setInnerButton('Update')
+            setFirstClickedValueIndex(-1)
 
         }else if(innerButton == 'Update'){
             setArrNum(old => {
@@ -72,6 +74,10 @@ export default function App(){
             <h2>Click for any number</h2>
             <div className="buttons">{array}</div>
             <button ref={updateButton} onClick={()=> updateValues()}>{innerButton}</button>
+            {/* to show the the player won the game */}
+            {buttonRef.current.length == arrNum.length && buttonRef.current.every(x => x.style.backgroundColor == "green") &&
+             <ReactConfetti />
+            }
         </div>
     )
 }
